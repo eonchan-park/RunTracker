@@ -1,7 +1,5 @@
 name: Build APK
 
-# GitHub에 이 프로젝트를 올리면 자동으로 APK를 만들어 줍니다.
-# 완료 후 Actions 탭 > 해당 실행 > Artifacts 에서 APK를 내려받으세요.
 on:
   workflow_dispatch:
   push:
@@ -9,16 +7,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-java@v4
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 17
-
-      - uses: android-actions/setup-android@v3
 
       - name: Build debug APK
         run: |
@@ -30,3 +26,5 @@ jobs:
         with:
           name: RunTracker-debug-apk
           path: app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          
