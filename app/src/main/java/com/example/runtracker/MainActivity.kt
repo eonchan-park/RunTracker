@@ -39,7 +39,8 @@ class MainActivity : ComponentActivity() {
         )
         // 경로 지도(osmdroid) 설정: 사용자 에이전트와 타일 캐시 위치
         Configuration.getInstance().apply {
-            userAgentValue = packageName
+        //  userAgentValue = packageName
+            userAgentValue = "RunTracker/1.0 (+https://github.com/eonchan-park/RunTracker)"
             osmdroidBasePath = File(cacheDir, "osmdroid")
             osmdroidTileCache = File(cacheDir, "osmdroid/tiles")
         }
